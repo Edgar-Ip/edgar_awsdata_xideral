@@ -1,47 +1,255 @@
-r<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ejercicios Dataset Netflix</title>
-  <style>
-    body { font-family: system-ui, Arial, sans-serif; margin: 2rem; line-height: 1.6; }
-    header { margin-bottom: 1.5rem; }
-    h1 { margin: 0 0 .25rem; }
-    .item { padding: 1rem; border: 1px solid #ddd; border-radius: 12px; margin-bottom: 1rem; }
-    .item a { font-weight: 600; text-decoration: none; }
-    .item a:hover { text-decoration: underline; }
-    small { color: #666; }
-  </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ejercicios Dataset Netflix</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "🎬";
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        header::after {
+            content: "📊";
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            font-size: 2.5rem;
+            opacity: 0.3;
+        }
+
+        h1 {
+            margin: 0 0 0.5rem;
+            color: #1e3a8a;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        h1::before {
+            content: "🎯";
+            margin-right: 0.5rem;
+        }
+
+        small {
+            color: #64748b;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border: none;
+            border-radius: 20px;
+            margin-bottom: 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #3730a3, #e11d48);
+        }
+
+        .item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .item h2 {
+            color: #1e3a8a;
+            margin: 0 0 1rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        #ej1::before {
+            content: "📈";
+        }
+
+        #ej2::before {
+            content: "📊";
+        }
+
+        .item p {
+            margin: 1rem 0;
+        }
+
+        .item a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            background: linear-gradient(135deg, #1e3a8a, #3730a3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        .item a::before {
+            content: "🚀";
+        }
+
+        .item a:hover {
+            background: linear-gradient(135deg, #3730a3, #1e3a8a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+            text-decoration: none;
+        }
+
+        .description {
+            background: rgba(241, 245, 249, 0.8);
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 4px solid #1e3a8a;
+            margin-top: 1rem;
+        }
+
+        /* Decorative elements */
+        .floating-icon {
+            position: fixed;
+            font-size: 2rem;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .icon1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .icon2 {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .icon3 {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .item {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Ejercicios Dataset Netflix</h1>
-    <small>Edgar Eduardo Gutiérrez Mejía</small>
-  </header>
+    <!-- Floating decorative icons -->
+    <div class="floating-icon icon1">📱</div>
+    <div class="floating-icon icon2">💻</div>
+    <div class="floating-icon icon3">📊</div>
+    
+    <div class="container">
+        <header>
+            <h1>Ejercicios Dataset Netflix</h1>
+            <small>Edgar Eduardo Gutiérrez Mejía</small>
+        </header>
+        
+        <main>
+            <!-- Ejercicio 1 -->
+            <section class="item" aria-labelledby="ej1">
+                <h2 id="ej1">Ejercicio 1: Netflix dataset</h2>
+                <p>
+                    <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixEjemplo.html" target="_blank">
+                        Abrir Ejercicio 1
+                    </a>
+                </p>
+                <div class="description">
+                    <p>Descripción: Análisis sencillo de los dataframes del dataset Netflix de Kaggle.</p>
+                </div>
+            </section>
 
-  <main>
-    <!-- Ejercicio 1 -->
-    <section class="item" aria-labelledby="ej1">
-      <h2 id="ej1">Ejercicio 1: Netflix dataset</h2>
-      <p>
-        <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixEjemplo.html" target="_blank">
-          Abrir Ejercicio 1
-        </a>
-      </p>
-      <p>Descripción: Análisis sencillo de los dataframes del dataset Netflix de Kaggle.</p>
-    </section>
-
-    <!-- Ejercicio 2 -->
-    <section class="item" aria-labelledby="ej2">
-      <h2 id="ej2">Ejercicio 2: Netflix Dataset análisis completo</h2>
-      <p>
-        <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixDataset.html" target="_blank">
-          Abrir Ejercicio 2
-        </a>
-      </p>
-      <p>Descripción: Análisis más completo del Dataset Netflix de Kaggle con presentación en gráficas.</p>
-    </section>
-  </main>
+            <!-- Ejercicio 2 -->
+            <section class="item" aria-labelledby="ej2">
+                <h2 id="ej2">Ejercicio 2: Netflix Dataset análisis completo</h2>
+                <p>
+                    <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixDataset.html" target="_blank">
+                        Abrir Ejercicio 2
+                    </a>
+                </p>
+                <div class="description">
+                    <p>Descripción: Análisis más completo del Dataset Netflix de Kaggle con presentación en gráficas.</p>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
