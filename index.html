@@ -14,13 +14,13 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            background: #000000;
             min-height: 100vh;
-            color: #333;
+            color: #fff;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
         }
@@ -28,51 +28,119 @@
         header {
             text-align: center;
             margin-bottom: 3rem;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            padding: 3rem 2rem;
+            border-radius: 25px;
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 30px rgba(138, 43, 226, 0.15);
+            backdrop-filter: blur(15px);
+            border: 2px solid transparent;
+            background-clip: padding-box;
             position: relative;
             overflow: hidden;
         }
 
         header::before {
-            content: "🎬";
+            content: "";
             position: absolute;
-            top: -10px;
-            right: 20px;
-            font-size: 3rem;
-            opacity: 0.3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                rgba(229, 9, 20, 0.1) 0%, 
+                rgba(29, 185, 84, 0.1) 25%,
+                rgba(138, 43, 226, 0.1) 50%,
+                rgba(255, 215, 0, 0.1) 75%,
+                rgba(229, 9, 20, 0.1) 100%);
+            animation: gradientShift 8s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
         }
 
         header::after {
-            content: "📊";
+            content: "⚡";
             position: absolute;
-            bottom: -10px;
-            left: 20px;
-            font-size: 2.5rem;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
             opacity: 0.3;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.1); }
         }
 
         h1 {
-            margin: 0 0 0.5rem;
-            color: #1e3a8a;
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 0 1rem;
+            background: linear-gradient(135deg, 
+                #ff6b6b 0%, 
+                #4ecdc4 25%, 
+                #45b7d1 50%, 
+                #96ceb4 75%, 
+                #feca57 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3rem;
+            font-weight: 800;
+            text-shadow: none;
+            font-family: 'Arial Black', Arial, sans-serif;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
             position: relative;
         }
 
         h1::before {
-            content: "🎯";
-            margin-right: 0.5rem;
+            content: "📊";
+            margin-right: 1rem;
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+            animation: rotate 4s linear infinite;
         }
 
-        small {
-            color: #64748b;
-            font-size: 1.1rem;
-            font-weight: 500;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .author-container {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 0.5rem;
+        }
+
+        .author-label {
+            color: #8a2be2;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .author-name {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.02em;
         }
 
         main {
@@ -81,50 +149,104 @@
             gap: 2rem;
         }
 
+        .netflix-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .spotify-row {
+            display: flex;
+            justify-content: center;
+        }
+
         .item {
-            background: rgba(255, 255, 255, 0.95);
             padding: 2rem;
             border: none;
             border-radius: 20px;
-            margin-bottom: 0;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .item::before {
+        /* Netflix styling */
+        .netflix-item {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            border: 2px solid #e50914;
+        }
+
+        .netflix-item::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #1e3a8a, #3730a3, #e11d48);
+            background: linear-gradient(90deg, #e50914, #b20710, #e50914);
         }
 
-        .item:hover {
+        .netflix-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(229, 9, 20, 0.3);
+            border-color: #ff0a1a;
+        }
+
+        /* Spotify styling */
+        .spotify-item {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            border: 2px solid #1db954;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .spotify-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1db954, #1ed760, #1db954);
+        }
+
+        .spotify-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(29, 185, 84, 0.3);
+            border-color: #1ed760;
         }
 
         .item h2 {
-            color: #1e3a8a;
             margin: 0 0 1rem;
             font-size: 1.5rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1rem;
         }
 
-        #ej1::before {
-            content: "📈";
+        /* Netflix titles */
+        .netflix-item h2 {
+            color: #e50914;
         }
 
-        #ej2::before {
-            content: "📊";
+        /* Spotify title */
+        .spotify-item h2 {
+            color: #1db954;
+        }
+
+        .netflix-logo {
+            width: 80px;
+            height: auto;
+            filter: brightness(1.2);
+        }
+
+        .spotify-logo {
+            width: 30px;
+            height: 30px;
+            filter: brightness(1.2);
         }
 
         .item p {
@@ -137,65 +259,57 @@
             gap: 0.5rem;
             font-weight: 600;
             text-decoration: none;
-            background: linear-gradient(135deg, #1e3a8a, #3730a3);
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 25px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+        }
+
+        /* Netflix buttons */
+        .netflix-item a {
+            background: linear-gradient(135deg, #e50914, #b20710);
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+        }
+
+        .netflix-item a:hover {
+            background: linear-gradient(135deg, #ff0a1a, #e50914);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+        }
+
+        /* Spotify button */
+        .spotify-item a {
+            background: linear-gradient(135deg, #1db954, #1ed760);
+            box-shadow: 0 4px 15px rgba(29, 185, 84, 0.3);
+        }
+
+        .spotify-item a:hover {
+            background: linear-gradient(135deg, #1ed760, #1db954);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(29, 185, 84, 0.5);
         }
 
         .item a::before {
             content: "🚀";
         }
 
-        .item a:hover {
-            background: linear-gradient(135deg, #3730a3, #1e3a8a);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
-            text-decoration: none;
-        }
-
         .description {
-            background: rgba(241, 245, 249, 0.8);
+            background: rgba(40, 40, 40, 0.8);
             padding: 1rem;
             border-radius: 12px;
-            border-left: 4px solid #1e3a8a;
             margin-top: 1rem;
+            color: #cccccc;
         }
 
-        /* Decorative elements */
-        .floating-icon {
-            position: fixed;
-            font-size: 2rem;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
-            pointer-events: none;
+        .netflix-item .description {
+            border-left: 4px solid #e50914;
         }
 
-        .icon1 {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
+        .spotify-item .description {
+            border-left: 4px solid #1db954;
         }
 
-        .icon2 {
-            top: 60%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-
-        .icon3 {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
+        /* Responsive design */
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -205,6 +319,11 @@
                 font-size: 2rem;
             }
             
+            .netflix-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
             .item {
                 padding: 1.5rem;
             }
@@ -212,57 +331,79 @@
     </style>
 </head>
 <body>
-    <!-- Floating decorative icons -->
-    <div class="floating-icon icon1">📱</div>
-    <div class="floating-icon icon2">💻</div>
-    <div class="floating-icon icon3">📊</div>
-    
     <div class="container">
         <header>
-            <h1>Ejercicios Dataset Netflix</h1>
-            <small>Edgar Eduardo Gutiérrez Mejía</small>
+            <h1>Análisis de Datasets</h1>
+            <div class="author-container">
+                <span class="author-label">Desarrollado por</span>
+                <div class="author-name">Edgar Eduardo Gutiérrez Mejía</div>
+            </div>
         </header>
         
         <main>
-            <!-- Ejercicio 1 -->
-            <section class="item" aria-labelledby="ej1">
-                <h2 id="ej1">Ejercicio 1: Netflix dataset</h2>
-                <p>
-                    <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixEjemplo.html" target="_blank">
-                        Abrir Ejercicio 1
-                    </a>
-                </p>
-                <div class="description">
-                    <p>Descripción: Análisis sencillo de los dataframes del dataset Netflix de Kaggle.</p>
-                </div>
-            </section>
+            <!-- Netflix Row -->
+            <div class="netflix-row">
+                <!-- Ejercicio 1 -->
+                <section class="item netflix-item" aria-labelledby="ej1">
+                    <h2 id="ej1">
+                        <svg class="netflix-logo" viewBox="0 0 111 30" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="#e50914">
+                                <path d="M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.500234,29.4366857 105.718437,29.1554972 L102.374168,20.4686475 L98.9371075,28.4375293 C97.2499766,28.1563408 95.5928391,28.061674 93.9057081,27.8432843 L99.9372012,14.0931671 L94.4680851,-5.68434189e-14 L99.5313525,-5.68434189e-14 L102.593495,7.87421502 L105.874965,-5.68434189e-14 L110.999156,-5.68434189e-14 L105.06233,14.2806261 Z M90.4686475,-5.68434189e-14 L85.8749649,-5.68434189e-14 L85.8749649,27.2499766 C87.3746368,27.3437061 88.9371075,27.4055675 90.4686475,27.5930265 L90.4686475,-5.68434189e-14 Z M81.9055207,26.93692 C77.7186241,26.6557316 73.5307901,26.4064111 69.250164,26.3117443 L69.250164,-5.68434189e-14 L73.9366389,-5.68434189e-14 L73.9366389,21.8745899 C76.6248008,21.9373887 79.3120255,22.1557784 81.9055207,22.2804387 L81.9055207,26.93692 Z M64.2496954,10.6561065 L64.2496954,15.3435186 L57.8442216,15.3435186 L57.8442216,25.9996251 L53.2186709,25.9996251 L53.2186709,-5.68434189e-14 L66.3436123,-5.68434189e-14 L66.3436123,4.68741213 L57.8442216,4.68741213 L57.8442216,10.6561065 L64.2496954,10.6561065 Z M45.3435186,4.68741213 L45.3435186,26.2498828 C43.7810479,26.2498828 42.1876465,26.2498828 40.6561065,26.3117443 L40.6561065,4.68741213 L35.8121661,4.68741213 L35.8121661,-5.68434189e-14 L50.2183897,-5.68434189e-14 L50.2183897,4.68741213 L45.3435186,4.68741213 Z M30.749836,15.5928391 C28.687787,15.5928391 26.2498828,15.5928391 24.4999531,15.6875059 L24.4999531,22.6562939 C27.2499766,22.4678976 30,22.2495079 32.7809542,22.1557784 L32.7809542,26.6557316 L19.812541,27.6876933 L19.812541,-5.68434189e-14 L32.7809542,-5.68434189e-14 L32.7809542,4.68741213 L24.4999531,4.68741213 L24.4999531,10.9991564 C26.3126816,10.9991564 29.0936358,10.9054269 30.749836,10.9054269 L30.749836,15.5928391 Z M4.78114163,12.9684132 L4.78114163,29.3429562 C3.09401069,29.5313525 1.59340144,29.7497422 0,30 L0,-5.68434189e-14 L4.4690224,-5.68434189e-14 L10.562377,17.0315868 L10.562377,-5.68434189e-14 L15.2497891,-5.68434189e-14 L15.2497891,28.061674 C13.5935889,28.3437998 11.906458,28.4375293 10.1246602,28.6868498 L4.78114163,12.9684132 Z"></path>
+                            </g>
+                        </svg>
+                        Dataset básico
+                    </h2>
+                    <p>
+                        <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixEjemplo.html" target="_blank">
+                            Abrir Ejercicio 1
+                        </a>
+                    </p>
+                    <div class="description">
+                        <p>Análisis sencillo de los dataframes del dataset Netflix de Kaggle.</p>
+                    </div>
+                </section>
 
-            <!-- Ejercicio 2 -->
-            <section class="item" aria-labelledby="ej2">
-                <h2 id="ej2">Ejercicio 2: Netflix Dataset análisis completo</h2>
-                <p>
-                    <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixDataset.html" target="_blank">
-                        Abrir Ejercicio 2
-                    </a>
-                </p>
-                <div class="description">
-                    <p>Descripción: Análisis más completo del Dataset Netflix de Kaggle con presentación en gráficas.</p>
-                </div>
-            </section>
+                <!-- Ejercicio 2 -->
+                <section class="item netflix-item" aria-labelledby="ej2">
+                    <h2 id="ej2">
+                        <svg class="netflix-logo" viewBox="0 0 111 30" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="#e50914">
+                                <path d="M105.06233,14.2806261 L110.999156,30 C109.249227,29.7497422 107.500234,29.4366857 105.718437,29.1554972 L102.374168,20.4686475 L98.9371075,28.4375293 C97.2499766,28.1563408 95.5928391,28.061674 93.9057081,27.8432843 L99.9372012,14.0931671 L94.4680851,-5.68434189e-14 L99.5313525,-5.68434189e-14 L102.593495,7.87421502 L105.874965,-5.68434189e-14 L110.999156,-5.68434189e-14 L105.06233,14.2806261 Z M90.4686475,-5.68434189e-14 L85.8749649,-5.68434189e-14 L85.8749649,27.2499766 C87.3746368,27.3437061 88.9371075,27.4055675 90.4686475,27.5930265 L90.4686475,-5.68434189e-14 Z M81.9055207,26.93692 C77.7186241,26.6557316 73.5307901,26.4064111 69.250164,26.3117443 L69.250164,-5.68434189e-14 L73.9366389,-5.68434189e-14 L73.9366389,21.8745899 C76.6248008,21.9373887 79.3120255,22.1557784 81.9055207,22.2804387 L81.9055207,26.93692 Z M64.2496954,10.6561065 L64.2496954,15.3435186 L57.8442216,15.3435186 L57.8442216,25.9996251 L53.2186709,25.9996251 L53.2186709,-5.68434189e-14 L66.3436123,-5.68434189e-14 L66.3436123,4.68741213 L57.8442216,4.68741213 L57.8442216,10.6561065 L64.2496954,10.6561065 Z M45.3435186,4.68741213 L45.3435186,26.2498828 C43.7810479,26.2498828 42.1876465,26.2498828 40.6561065,26.3117443 L40.6561065,4.68741213 L35.8121661,4.68741213 L35.8121661,-5.68434189e-14 L50.2183897,-5.68434189e-14 L50.2183897,4.68741213 L45.3435186,4.68741213 Z M30.749836,15.5928391 C28.687787,15.5928391 26.2498828,15.5928391 24.4999531,15.6875059 L24.4999531,22.6562939 C27.2499766,22.4678976 30,22.2495079 32.7809542,22.1557784 L32.7809542,26.6557316 L19.812541,27.6876933 L19.812541,-5.68434189e-14 L32.7809542,-5.68434189e-14 L32.7809542,4.68741213 L24.4999531,4.68741213 L24.4999531,10.9991564 C26.3126816,10.9991564 29.0936358,10.9054269 30.749836,10.9054269 L30.749836,15.5928391 Z M4.78114163,12.9684132 L4.78114163,29.3429562 C3.09401069,29.5313525 1.59340144,29.7497422 0,30 L0,-5.68434189e-14 L4.4690224,-5.68434189e-14 L10.562377,17.0315868 L10.562377,-5.68434189e-14 L15.2497891,-5.68434189e-14 L15.2497891,28.061674 C13.5935889,28.3437998 11.906458,28.4375293 10.1246602,28.6868498 L4.78114163,12.9684132 Z"></path>
+                            </g>
+                        </svg>
+                        Análisis completo
+                    </h2>
+                    <p>
+                        <a class="link" href="edgar_awsdata_xideral/Tareas/NetflixDataset.html" target="_blank">
+                            Abrir Ejercicio 2
+                        </a>
+                    </p>
+                    <div class="description">
+                        <p>Análisis más completo del Dataset Netflix de Kaggle con presentación en gráficas.</p>
+                    </div>
+                </section>
+            </div>
 
-             <!-- Ejercicio 3 -->
-            <section class="item" aria-labelledby="ej3">
-                <h2 id="ej3">Ejercicio 3: Spotify Dataset análisis</h2>
-                <p>
-                    <a class="link" href="edgar_awsdata_xideral/Tareas/Spotify.html" target="_blank">
-                        Abrir Ejercicio 3
-                    </a>
-                </p>
-                <div class="description">
-                    <p>Descripción: Análisis del dataset de Spotify con visualizaciones y estadísticas musicales.</p>
-                </div>
-            </section>
-            
+            <!-- Spotify Row -->
+            <div class="spotify-row">
+                <!-- Ejercicio 3 -->
+                <section class="item spotify-item" aria-labelledby="ej3">
+                    <h2 id="ej3">
+                        <svg class="spotify-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path fill="#1db954" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 17.3c-.216 0-.432-.065-.631-.196-1.662-1.004-3.772-1.554-5.937-1.554-1.228 0-2.448.146-3.623.434-.277.068-.557-.088-.625-.365-.068-.277.088-.557.365-.625 1.277-.312 2.596-.469 3.883-.469 2.354 0 4.634.592 6.424 1.673.258.155.342.49.187.748-.101.168-.28.254-.461.254zm.884-2.283c-.23 0-.45-.106-.592-.29-.207-.307-.125-.722.182-.929 1.959-1.18 4.419-1.844 6.938-1.844 1.313 0 2.617.169 3.871.502.31.082.497.397.415.707-.082.31-.397.497-.707.415-1.149-.305-2.346-.461-3.579-.461-2.309 0-4.566.609-6.363 1.693-.117.07-.248.106-.382.106l.217-.001zm1.054-2.59c-.29 0-.574-.133-.759-.383-.239-.323-.174-.777.149-1.016C20.711 9.663 24 10.948 24 12.034c0 .207-.168.375-.375.375-.207 0-.375-.168-.375-.375 0-.745-2.586-1.83-6.125-.995-.323.077-.659-.123-.736-.446-.077-.323.123-.659.446-.736.394-.093.8-.14 1.208-.14z"/>
+                        </svg>
+                        Spotify Dataset
+                    </h2>
+                    <p>
+                        <a class="link" href="edgar_awsdata_xideral/Tareas/Spotify.html" target="_blank">
+                            Abrir Ejercicio 3
+                        </a>
+                    </p>
+                    <div class="description">
+                        <p>Análisis del dataset de Spotify con visualizaciones y estadísticas musicales.</p>
+                    </div>
+                </section>
+            </div>
         </main>
     </div>
 </body>
