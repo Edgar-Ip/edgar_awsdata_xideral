@@ -157,8 +157,10 @@
         }
 
         .spotify-row {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            justify-items: center;
         }
 
         .item {
@@ -198,8 +200,8 @@
         .spotify-item {
             background: linear-gradient(135deg, #000000, #1a1a1a);
             border: 2px solid #1db954;
-            max-width: 500px;
             width: 100%;
+            max-width: 450px;
         }
 
         .spotify-item::before {
@@ -307,6 +309,69 @@
 
         .spotify-item .description {
             border-left: 4px solid #1db954;
+        }
+
+        /* NYC Taxi styling */
+        .taxi-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .taxi-item {
+            background: linear-gradient(135deg, #ffdd00, #ffd700);
+            border: 2px solid #000000;
+            max-width: 500px;
+            width: 100%;
+            color: #000000;
+        }
+
+        .taxi-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #000000, #333333, #000000);
+        }
+
+        .taxi-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(255, 221, 0, 0.4);
+            border-color: #333333;
+            background: linear-gradient(135deg, #ffd700, #ffdd00);
+        }
+
+        .taxi-item h2 {
+            color: #000000;
+            font-weight: 700;
+        }
+
+        .taxi-emoji {
+            font-size: 1.8rem;
+            margin-right: 0.5rem;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .taxi-item a {
+            background: linear-gradient(135deg, #000000, #333333);
+            color: #ffdd00;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            border: 1px solid #ffdd00;
+        }
+
+        .taxi-item a:hover {
+            background: linear-gradient(135deg, #333333, #000000);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            color: #ffd700;
+        }
+
+        .taxi-item .description {
+            background: rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #000000;
+            color: #000000;
         }
 
         /* Responsive design */
@@ -419,6 +484,25 @@
                     </p>
                     <div class="description">
                         <p>Aplicación interactiva de Spotify desarrollada con Streamlit para análisis dinámico de datos.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- NYC Taxi Row -->
+            <div class="taxi-row">
+                <!-- Ejercicio 5 -->
+                <section class="item taxi-item" aria-labelledby="ej5">
+                    <h2 id="ej5">
+                        <span class="taxi-emoji">🚕</span>
+                        NYC Taxis Json
+                    </h2>
+                    <p>
+                        <a class="link" href="edgar_awsdata_xideral/Tareas/JSON_nyc_taxis.html.html" target="_blank">
+                            Abrir Ejercicio 5
+                        </a>
+                    </p>
+                    <div class="description">
+                        <p>Análisis de cálculo de promedios de las columnas de taxis amarillos de Nueva York, generando el resultado en formato JSON y guardando ese JSON en S3 von la nueva ruta.</p>
                     </div>
                 </section>
             </div>
