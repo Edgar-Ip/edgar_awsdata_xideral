@@ -154,6 +154,7 @@
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-bottom: 2rem;
+            justify-items: center;
         }
 
         .spotify-row {
@@ -178,6 +179,8 @@
         .netflix-item {
             background: linear-gradient(135deg, #000000, #1a1a1a);
             border: 2px solid #e50914;
+            width: 100%;
+            max-width: 450px;
         }
 
         .netflix-item::before {
@@ -374,12 +377,18 @@
             color: #000000;
         }
 
+        .taxi-item {
+            width: 100%;
+            max-width: 450px;
+        }
+
         /* Bottom row styling */
         .bottom-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
             margin-top: 1rem;
+            justify-items: center;
         }
 
         /* Titanic styling */
@@ -479,6 +488,193 @@
             color: #ffffff;
         }
 
+        /* COVID Final Project styling */
+        .covid-row {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .covid-item {
+            background: linear-gradient(135deg, 
+                #0f051d 0%, 
+                #2d1b35 25%, 
+                #4a2c5a 50%, 
+                #1a0d2e 75%, 
+                #0f051d 100%);
+            border: 2px solid #8e44ad;
+            width: 100%;
+            max-width: 600px;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 20px 50px rgba(142, 68, 173, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+
+        .covid-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                #8e44ad 0%, 
+                #9b59b6 25%, 
+                #e74c3c 50%, 
+                #f39c12 75%, 
+                #8e44ad 100%);
+            animation: covidGlow 6s ease infinite;
+        }
+
+        @keyframes covidGlow {
+            0%, 100% { 
+                background: linear-gradient(90deg, #8e44ad, #9b59b6, #e74c3c, #f39c12, #8e44ad);
+                transform: translateX(0%);
+            }
+            50% { 
+                background: linear-gradient(90deg, #e74c3c, #f39c12, #8e44ad, #9b59b6, #e74c3c);
+                transform: translateX(10%);
+            }
+        }
+
+        .covid-item::after {
+            content: "💾";
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 1.8rem;
+            opacity: 0.4;
+            animation: dataFloat 4s ease-in-out infinite;
+        }
+        
+
+        @keyframes dataFloat {
+            0%, 100% { 
+                opacity: 0.4; 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: translateY(-8px) rotate(10deg); 
+            }
+        }
+
+        .covid-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 60px rgba(142, 68, 173, 0.5),
+                0 0 40px rgba(231, 76, 60, 0.2);
+            border-color: #9b59b6;
+            background: linear-gradient(135deg, 
+                #2d1b35 0%, 
+                #0f051d 25%, 
+                #4a2c5a 50%, 
+                #2d1b35 75%, 
+                #1a0d2e 100%);
+        }
+
+        .covid-item h2 {
+            color: #ffffff;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .covid-emoji {
+            font-size: 2rem;
+            filter: drop-shadow(0 0 8px rgba(231, 76, 60, 0.6));
+            animation: virusFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes virusFloat {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg); 
+                filter: drop-shadow(0 0 8px rgba(231, 76, 60, 0.6));
+            }
+            50% { 
+                transform: scale(1.1) rotate(5deg); 
+                filter: drop-shadow(0 0 12px rgba(231, 76, 60, 0.8));
+            }
+        }
+
+        .aws-badge {
+            background: linear-gradient(135deg, #ff9900, #ff6600);
+            color: #000000;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            box-shadow: 0 3px 10px rgba(255, 153, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: absolute;
+            top: -5px;
+            right: 0;
+        }
+
+        .covid-link {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            color: white;
+            box-shadow: 
+                0 6px 20px rgba(142, 68, 173, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+            width: 100%;
+            text-align: center;
+            min-height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .covid-link::before {
+            content: "🔬";
+            margin-right: 0.5rem;
+        }
+
+        .covid-link:hover {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 25px rgba(142, 68, 173, 0.6),
+                0 0 30px rgba(155, 89, 182, 0.3);
+            border-color: #a569bd;
+        }
+
+        .covid-item .description {
+            background: rgba(142, 68, 173, 0.15);
+            border-left: 4px solid #8e44ad;
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-top: 1.5rem;
+            position: relative;
+        }
+
+        .covid-item .description::before {
+            content: "📈";
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.2rem;
+            opacity: 0.6;
+        }
+
+        
+
         /* Responsive design */
         @media (max-width: 768px) {
             .container {
@@ -503,7 +699,7 @@
 <body>
     <div class="container">
         <header>
-            <h1>Análisis de Datasets</h1>
+            <h1>Portafolio Datasets<br><span style="font-size: 0.7em; opacity: 0.9; color: #ffb6c1;">Academia AWS</span></h1>
             <div class="author-container">
                 <span class="author-label">Desarrollado por</span>
                 <div class="author-name">Edgar Eduardo Gutiérrez Mejía</div>
@@ -630,7 +826,26 @@
                         </p>
                     </div>
                     <div class="description">
-                        <p>Análisis del histórico dataset de las personas que abordaron el Titanic y los que sobrevivieron.</p>
+                        <p>Análisis completo del histórico dataset del Titanic con procesamiento tradicional y trabajos distribuidos con Apache Spark.</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- COVID Final Project Row -->
+            <div class="covid-row">
+                <!-- Proyecto Final -->
+                <section class="item covid-item" aria-labelledby="covid-final">
+                    <h2 id="covid-final">
+                        <span class="covid-emoji">🦠</span>
+                        Proyecto Final Dataset Covid19
+                    </h2>
+                    <p>
+                        <a class="link covid-link" href="edgar_awsdata_xideral/ProyectoFinal/ProyectoFinalV6.html" target="_blank">
+                            Ver Proyecto Final Completo
+                        </a>
+                    </p>
+                    <div class="description">
+                        <p>Análisis masivo de más de 100,000 registros almacenados en AWS S3 con procesamiento distribuido y visualizaciones avanzadas.</p>
                     </div>
                 </section>
             </div>
